@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "productName": "Assemblable barebone project for Electron",
+  "description": "Using Polymer with React on Electron",
+  "license": "MIT",
+  "repository": "electronkr/electron-starter-kit",
+  "author": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "rm -rf build; mkdir -p build; electron-packager . $npm_package_productName --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git"
+  },
+  "keywords": [
+    "electron",
+    "starterkit"
+  ],
+  "devDependencies": {
+    "electron-packager": "^3.3.0",
+    "electron-prebuilt": "^0.25.2"
+  },
+  "dependencies": {
+    "node-jsx": "^0.13.3",
+    "react": "^0.13.3"
+  }
+}
