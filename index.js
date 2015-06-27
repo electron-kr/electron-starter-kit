@@ -15,9 +15,9 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-  const isDevMode = process.argv.indexOf('--dev') >= 0;
   const width = 800;
   const height = 600;
+  const is2nd = process.argv.indexOf('--2nd') >= 0;
 
   var opts = {
     width: width,
@@ -25,15 +25,8 @@ app.on('ready', function () {
     resizable: true
   };
 
-  if (isDevMode) {
-    var atomScreen = require('screen');
-    var displays = atomScreen.getAllDisplays();
-    var d2 = displays.length > 1 ? displays[1] : null;
-
-    if (d2) {
-      opts.x = d2.bounds.x + (d2.size.width - width) / 2;
-      opts.y = d2.bounds.y + (d2.size.height - height) / 2;
-    }
+  if (is2nd) {
+    setOptsForDualScreen(opts);
   }
 
   mainWindow = new BrowserWindow(opts);
@@ -48,3 +41,13 @@ app.on('ready', function () {
     mainWindow = null;
   });
 });
+
+function setOptsForDualScreen(opts) {
+  var atomScreen = require('screen');
+  var displays = atomScreen.getAllDisplays();
+  var d2 = displays.length > 1 ? displays[1] : null;
+  if (d2) {
+    opts.x = d2.bounds.x + (d2.size.width - opts.width) / 2;
+    opts.y = d2.bounds.y + (d2.size.height - opts.height) / 2;
+  }
+}
