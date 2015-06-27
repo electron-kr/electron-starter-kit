@@ -15,11 +15,21 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    resizable: false
-  });
+  const width = 800;
+  const height = 600;
+  const is2nd = process.argv.indexOf('--2nd') >= 0;
+
+  var opts = {
+    width: width,
+    height: height,
+    resizable: true
+  };
+
+  if (is2nd) {
+    setOptsForDualScreen(opts);
+  }
+
+  mainWindow = new BrowserWindow(opts);
 
   // WARN: Inspect window should be opened before loading URL
   mainWindow.inspectElement(0, 0);
@@ -31,3 +41,13 @@ app.on('ready', function () {
     mainWindow = null;
   });
 });
+
+function setOptsForDualScreen(opts) {
+  var atomScreen = require('screen');
+  var displays = atomScreen.getAllDisplays();
+  var d2 = displays.length > 1 ? displays[1] : null;
+  if (d2) {
+    opts.x = d2.bounds.x + (d2.size.width - opts.width) / 2;
+    opts.y = d2.bounds.y + (d2.size.height - opts.height) / 2;
+  }
+}
