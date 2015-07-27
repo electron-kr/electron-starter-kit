@@ -12,8 +12,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "electron .",
-    "build": "rm -rf build; mkdir -p build; electron-packager . $npm_package_productName --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git",
+    "start": "webpack --color --progressive; electron .",
+    "build": "webpack --color; rm -rf build; mkdir -p build; electron-packager . $npm_package_productName --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git",
     "start-2nd": "electron --2nd ."
   },
   "keywords": [
