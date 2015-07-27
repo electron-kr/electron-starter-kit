@@ -2,7 +2,7 @@ module.exports = {
   context: __dirname + "/src",
 
   entry: {
-    main: "./main.jsx",
+    main: "./main",
     css: "./index.css",
     html: "./index.html"
   },
@@ -10,6 +10,10 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: __dirname + "/app"
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
 
   module: {
