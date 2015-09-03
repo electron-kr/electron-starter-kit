@@ -12,8 +12,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "webpack --color --progressive; electron .",
-    "build": "webpack --color; rm -rf build; mkdir -p build; electron-packager . $npm_package_productName --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git",
+    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000 --inline & webpack --color; MODE=HOT electron .",
+    "build": "webpack --color; rm -rf build; mkdir -p build; electron-packager . $npm_package_productName --out=build --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore node_modules/babel-core --ignore node_modules/file-loader --ignore node_modules/webpack --ignore node_modules/babel-loader --ignore node_modules/react-hot-loader --ignore=.git",
     "start-2nd": "electron --2nd ."
   },
   "keywords": [

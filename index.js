@@ -34,7 +34,11 @@ app.on('ready', function () {
   // WARN: Inspect window should be opened before loading URL
   mainWindow.inspectElement(0, 0);
 
-  mainWindow.loadUrl(`file://${__dirname}/app/index.html`);
+  if (process.env.MODE === 'HOT') {
+    mainWindow.loadUrl(`file://${__dirname}/app/index-hot.html`);
+  } else {
+    mainWindow.loadUrl(`file://${__dirname}/app/index.html`);
+  }
   mainWindow.on('closed', function () {
     // deref the window
     // for multiple windows store them in an array

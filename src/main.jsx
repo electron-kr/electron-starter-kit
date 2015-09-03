@@ -1,6 +1,6 @@
 import React from "react";
-import {MainWindow} from "./components/main-window";
+import {MainView} from "./components/main-view";
 
 React.render(
-  <MainWindow />, document.body
+  <MainView/>, document.body
 );

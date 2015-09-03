@@ -1,10 +1,10 @@
 import React from "react";
 
-export class MainWindow extends React.Component {
+export class MainView extends React.Component {
   constructor() {
     super();
 
-    this.mainWindow = {
+    this.mainStyle= {
       position: 'absolute',
       width: '500px',
       height: '250px',
@@ -15,7 +15,7 @@ export class MainWindow extends React.Component {
       textAlign: 'center'
     };
 
-    this.header = {
+    this.headerStyle = {
       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
       fontSize: '60px',
       fontWeight: 100,
@@ -25,8 +25,8 @@ export class MainWindow extends React.Component {
   }
 
   render() {
-    return <div style={this.mainWindow}>
-      <header><h1 style={this.header}>Electron Starter Kit</h1></header>
+    return <div style={this.mainStyle}>
+      <header><h1 style={this.headerStyle}>Electron Starter Kit</h1></header>
       <section></section>
       <footer></footer>
     </div>;
